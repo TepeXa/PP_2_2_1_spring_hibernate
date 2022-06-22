@@ -6,6 +6,12 @@ import javax.persistence.*;
 @Table(name = "cars")
 public class Car {
 
+    public Car() {}
+
+    public Car(String model, int series) {
+        this.model = model;
+        this.series = series;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -60,12 +66,5 @@ public class Car {
                 ", model='" + model + '\'' +
                 ", series=" + series +
                 '}';
-    }
-
-    public Car() {}
-
-    public Car(String model, int series) {
-        this.model = model;
-        this.series = series;
     }
 }

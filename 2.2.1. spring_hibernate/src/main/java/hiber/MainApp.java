@@ -17,15 +17,20 @@ public class MainApp {
 
       UserService userService = context.getBean(UserService.class);
 
-      userService.add(new User("User1", "Lastname1", "user1@mail.ru"));
-      userService.add(new User("User2", "Lastname2", "user2@mail.ru"));
-      userService.add(new User("User3", "Lastname3", "user3@mail.ru"));
-      userService.add(new User("User4", "Lastname4", "user4@mail.ru"));
+      //userService.add(new User("Denis", "Terentyev", "Denis@mail.ru"));
+      //userService.add(new User("Daniil", "Pyrkh", "Daniil@mail.ru"));
+      //userService.add(new User("Aleksey", "Terentyev", "Aleksey@mail.ru"));
+      //userService.add(new User("Renat", "Araslanov", "Renat@mail.ru"));
 
-      Car volvo = new Car("Volvo", 9);
-      Car bmw = new Car("BMW", 325);
-      Car suzuki = new Car("Sisuki", 4);
-      Car lada = new Car("Ladaa", 21014);
+      User Denis = (new User("Denis", "Terentyev", "Denis@mail.ru"));
+      User Daniil =(new User("Daniil", "Pyrkh", "Daniil@mail.ru"));
+      User Aleksey =(new User("Aleksey", "Terentyev", "Aleksey@mail.ru"));
+      User Renat =(new User("Renat", "Araslanov", "Renat@mail.ru"));
+
+      Car Audi = new Car("Audi", 5);
+      Car Mercedes = new Car("Mercedes", 200);
+      Car Volkswagen = new Car("Volkswagen", 2);
+      Car Toyota = new Car("Toyota", 1);
 
       List<User> users = userService.listUsers();
       for (User user : users) {
@@ -36,10 +41,10 @@ public class MainApp {
          System.out.println();
       }
 
-     // userService.add(vasya.setCar(volvo).setUser(vasya));
-     // userService.add(petya.setCar(bmw).setUser(petya));
-     // userService.add(olga.setCar(suzuki).setUser(olga));
-     // userService.add(sveta.setCar(lada).setUser(sveta));
+     userService.add(Denis.setCar(Audi).setUser(Denis));
+     userService.add(Renat.setCar(Toyota).setUser(Renat));
+     userService.add(Daniil.setCar(Mercedes).setUser(Daniil));
+     userService.add(Aleksey.setCar(Volkswagen).setUser(Aleksey));
 
       // пользователи с машинами
       for (User user : userService.listUsers()) {
@@ -47,11 +52,11 @@ public class MainApp {
       }
 
       // достать юзера, владеющего машиной по ее модели и серии
-      System.out.println(userService.getUserByCar("BMW", 325));
+      System.out.println(userService.getUserByCar("Audi", 5));
 
       // нет такого юзера с такой машиной
       try {
-         User notFoundUser = userService.getUserByCar("GAZ", 4211);
+         User notFoundUser = userService.getUserByCar("Audi", 6);
       } catch (NoResultException e) {
          System.out.println("User not found");
       }
