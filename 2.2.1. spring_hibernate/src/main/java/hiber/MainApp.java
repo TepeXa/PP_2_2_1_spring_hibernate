@@ -50,12 +50,32 @@ public class MainApp {
       // достать юзера, владеющего машиной по ее модели и серии
       System.out.println(userService.getUserByCar("Audi", 5));
 
+      try {
+      System.out.println(userService.getUserByCarS(Audi));
+       } catch (NoResultException e) {
+           System.out.println("Пользователь с авто " + Audi + " не найден");
+       }
+
+      // не существующий user+car
+       try {
+           System.out.println(userService.getUserByCarS(AudiBad));
+       } catch (NoResultException e) {
+           System.out.println("Пользователь с авто " + AudiBad + " не найден");
+       }
+
+      // не существующий user+car
+       try {
+           System.out.println(userService.getUserByCar("Audi", 6));
+       } catch (NoResultException e) {
+        System.out.println("Пользователь с авто " + AudiBad + " не найден");
+       }
+
       // не существующий user+car
       try {
-         User notFoundUser = userService.getUserByCar("Audi", 6);
-      } catch (NoResultException e) {
-         System.out.println("Пользователь с авто " + AudiBad + " не найден");
-      }
+        User notFoundUser = userService.getUserByCar("Audi", 6);
+     } catch (NoResultException e) {
+        System.out.println("Пользователь с авто " + AudiBad + " не найден");
+     }
 
       context.close();
    }
