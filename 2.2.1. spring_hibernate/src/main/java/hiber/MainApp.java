@@ -17,17 +17,13 @@ public class MainApp {
 
       UserService userService = context.getBean(UserService.class);
 
-      //userService.add(new User("Denis", "Terentyev", "Denis@mail.ru"));
-      //userService.add(new User("Daniil", "Pyrkh", "Daniil@mail.ru"));
-      //userService.add(new User("Aleksey", "Terentyev", "Aleksey@mail.ru"));
-      //userService.add(new User("Renat", "Araslanov", "Renat@mail.ru"));
-
       User Denis = (new User("Denis", "Terentyev", "Denis@mail.ru"));
       User Daniil =(new User("Daniil", "Pyrkh", "Daniil@mail.ru"));
       User Aleksey =(new User("Aleksey", "Terentyev", "Aleksey@mail.ru"));
       User Renat =(new User("Renat", "Araslanov", "Renat@mail.ru"));
 
       Car Audi = new Car("Audi", 5);
+      Car AudiBad = new Car("Audi", 6);
       Car Mercedes = new Car("Mercedes", 200);
       Car Volkswagen = new Car("Volkswagen", 2);
       Car Toyota = new Car("Toyota", 1);
@@ -54,11 +50,11 @@ public class MainApp {
       // достать юзера, владеющего машиной по ее модели и серии
       System.out.println(userService.getUserByCar("Audi", 5));
 
-      // нет такого юзера с такой машиной
+      // не существующий user+car
       try {
          User notFoundUser = userService.getUserByCar("Audi", 6);
       } catch (NoResultException e) {
-         System.out.println("User not found");
+         System.out.println("Пользователь с авто " + AudiBad + " не найден");
       }
 
       context.close();
