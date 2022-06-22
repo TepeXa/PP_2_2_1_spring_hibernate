@@ -42,12 +42,12 @@ public class MainApp {
      userService.add(Daniil.setCar(Mercedes).setUser(Daniil));
      userService.add(Aleksey.setCar(Volkswagen).setUser(Aleksey));
 
-      // пользователи с машинами
+      // user + car
       for (User user : userService.listUsers()) {
          System.out.println(user + " " + user.getCar());
       }
 
-      // достать юзера, владеющего машиной по ее модели и серии
+      // user by car
       System.out.println(userService.getUserByCar("Audi", 5));
 
       try {
